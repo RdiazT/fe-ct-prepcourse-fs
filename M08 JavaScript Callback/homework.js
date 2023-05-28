@@ -5,12 +5,21 @@ function mayuscula(nombre) {
    // Debe devolver el mismo nombre, pero con la primera letra en mayúscula.
    // [Ejemplo]: "mario" ----> "Mario".
    // Tu código:
+   //return nombre[0].toUpperCase() + nombre.slice(1);
+   let array =nombre.split("");
+   array[0] = array[0].toUpperCase();
+   return array.join("");
 }
+//let nombre = "mario";
+//console.log(nombre.split(""));
+//console.log(mayuscula("mario"));
 
 function invocarCallback(cb) {
    // Invoca/ejecuta el callback `cb`.
-   // [NOTA]: no debes reotrnar nada.
+   // [NOTA]: no debes retornar nada.
    // Tu código:
+   cb();
+
 }
 
 function operacionMatematica(num1, num2, cb) {
@@ -18,7 +27,17 @@ function operacionMatematica(num1, num2, cb) {
    // El callback realiza una operación matemática, por lo que necesita de los dos números.
    // Retorna el resultado del callback pasándole como parámetros los números.
    // Tu código:
+   return cb(num1, num2);
+   
 }
+//let sum = function(num1, num2) {
+//   return num1 + num2;
+//};
+//let mult = function(num1, num2) {
+//   return num1 * num2;
+//};
+//console.log(operacionMatematica(2, 10, sum));
+//console.log(operacionMatematica(2, 10, mult));
 
 function sumarArray(arrayOfNumbers, cb) {
    // Recibes un arreglo de números y un callback.
@@ -26,6 +45,15 @@ function sumarArray(arrayOfNumbers, cb) {
    // Este resultado debes pasárselo como argumento al callback recibido.
    // [NOTA]: no debes reotrnar nada.
    // Tu código:
+   let resultadodesuma = 0
+   for (let index = 0; index < arrayOfNumbers.length; index++) {
+      resultadodesuma += arrayOfNumbers[index];
+      
+   }
+   cb(resultadodesuma)
+
+   //cb(arrayOfNumbers.reduce((i, el)=> i + el, 0))
+
 }
 
 function forEach(array, cb) {
@@ -33,6 +61,10 @@ function forEach(array, cb) {
    // Debes iterar sobre el arreglo, y por cada elemento ejecutar el callback.
    // Debes pasarle el elemento como argumento al callback.
    // Tu código:
+   for (let index = 0; index < array.length; index++) {
+      cb(array[index])
+   }
+   //array.forEach(el =>cb(el))
 }
 
 function map(array, cb) {
@@ -40,13 +72,32 @@ function map(array, cb) {
    // Tiene que guardar el resultado devuelto por el callback en cada elemento dentro de un nuevo arreglo.
    // Retorna el nuevo arreglo.
    // Tu código:
+   var nuevoArray = [];
+   for(var i=0; i<array.length; i++){
+      nuevoArray.push(cb(array[i]));
+   }
+   return nuevoArray;
+   
 }
+//function cb(param){
+//   return param * 2
+//}
 
 function filter(arrayOfStrings) {
    // Debes identificar todos los elementos el arreglo que comiencen con la letra "a".
    // Luego retorna un nuevo arreglo con estos elementos.
    // Tu código:
+
+   var resultado = [];
+   for(var i = 0; i < arrayOfStrings.length; i++) {
+      if (arrayOfStrings[i][0] === "a"){
+         resultado.push(arrayOfStrings[i]);
+      }
+   }
+   return resultado;
 }
+var myStrings = ["uno", "dos", "tres"];
+console.log(myStrings[2][0]);
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
 module.exports = {
